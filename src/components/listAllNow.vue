@@ -231,7 +231,6 @@ export default {
     setInterval(this.timeReduce, 1000);
   },
   created() {
-    this.canKill = true;
     this.loadData();
   }
 }
