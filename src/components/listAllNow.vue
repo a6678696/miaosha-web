@@ -27,7 +27,7 @@
               <h3>秒杀时间：{{ miaoShaGoods.startTime }} ~ {{ miaoShaGoods.endTime }}</h3>
               <h3 v-if="statusMiaoSha===0">当前状态: <span style="color:green;">正在秒杀</span></h3>
               <h3 v-if="statusMiaoSha===1">当前状态: <span style="color:#9a9a3d;">排队中...</span></h3>
-              <h3 v-if="statusMiaoSha===2">当前状态: <span style="color:green;">恭喜，你已经抢到商品</span></h3>
+              <h3 v-if="statusMiaoSha===2">当前状态: <span style="color:green;">恭喜，你已经抢到商品，请尽快去支付，不然30分钟未支付会订单被取消!!</span></h3>
               <h3 v-if="statusMiaoSha===3">当前状态: <span style="color:red;">你手慢了，没有抢到商品</span></h3>
               <el-button type="primary" round @click="killGoods()" v-if="canKill">抢购</el-button>
               <el-button type="danger" disabled round @click="killGoods()" v-if="!canKill">无法抢购</el-button>
@@ -193,7 +193,7 @@ export default {
             console.log(response.data);
             _this.statusMiaoSha = 2;
             _this.waitTime = 10000;
-            ElementUI.Message.success("你已成功抢到商品");
+            ElementUI.Message.success("你已成功抢到商品,请尽快去支付,不然30分钟未支付会订单被取消!!即使订单取消也不能继续秒杀本商品!!");
           } else if (response.data === -1) {
             console.log(response.data);
             _this.statusMiaoSha = 3;
