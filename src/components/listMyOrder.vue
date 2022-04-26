@@ -39,6 +39,7 @@
           <el-button size="mini" type="primary" @click="openDialog(scope.row.id)" v-if="scope.row.payStatus===0">支付
           </el-button>
           <el-tag type="success" v-if="scope.row.payStatus===1">已支付</el-tag>
+          <el-tag type="danger" v-if="scope.row.payStatus===2">30分钟未支付自动取消</el-tag>
         </template>
       </el-table-column>
     </el-table>
